@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.7  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Sayyam Chandra">
+	<META NAME="CREATED" CONTENT="20211030;14493785">
+	<META NAME="CHANGEDBY" CONTENT="Sayyam Chandra">
+	<META NAME="CHANGED" CONTENT="20211030;15001562">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+		H1 { margin-bottom: 0.21cm }
+		H1.western { font-family: "Times New Roman", serif }
+		H1.cjk { font-family: "SimSun" }
+		H1.ctl { font-family: "Lucida Sans" }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-IN" DIR="LTR">
+<P STYLE="margin-bottom: 0cm; border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+		<FONT COLOR="#800000"><FONT SIZE=6 STYLE="font-size: 22pt"><B><SPAN STYLE="background: #ffff00">Google
+Text-to-Speech GUI version</SPAN></B></FONT></FONT></P>
+<H1 CLASS="western" STYLE="font-style: normal"><FONT COLOR="#800000"><FONT FACE="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji"><B>text-to-speech-project</B></FONT></FONT></H1>
+<P STYLE="margin-bottom: 0.42cm; font-style: normal; font-weight: normal; widows: 2; orphans: 2">
+<FONT COLOR="#24292f"><FONT FACE="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji"><FONT SIZE=3>This
+program use gtts module and tkinter module. In this GUI version , all
+necessary widget are there but not in a good fashion. Anyone can
+convert there text to speech but there are some protocols u have to
+follow:</FONT></FONT></FONT></P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal; widows: 2; orphans: 2">
+	<FONT COLOR="#24292f"><FONT FACE="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji"><FONT SIZE=3>Internet
+	Connection is Must.</FONT></FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal; widows: 2; orphans: 2">
+	<FONT COLOR="#24292f"><FONT FACE="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji"><FONT SIZE=3>Text
+	File must have .txt extension.</FONT></FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0cm; border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm; widows: 2; orphans: 2">
+	<FONT COLOR="#24292f"><FONT FACE="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Text
+	File must not contain any special corrector which cannot be
+	converted into a speech like (,),#,&amp;,^.....etc</SPAN></SPAN></FONT></FONT></FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm; border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+<IMG SRC="documentation_html_61554b43.jpg" NAME="graphics1" ALIGN=LEFT WIDTH=376 HEIGHT=190 BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=4 STYLE="font-size: 16pt"><B>The
+code for the program is&gt;&gt;</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">#importation</P>
+<P STYLE="margin-bottom: 0cm">from tkinter import *</P>
+<P STYLE="margin-bottom: 0cm">import gtts</P>
+<P STYLE="margin-bottom: 0cm">from playsound import playsound</P>
+<P STYLE="margin-bottom: 0cm">from tkinter import filedialog</P>
+<P STYLE="margin-bottom: 0cm">from tkinter import ttk</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">def browseFiles():</P>
+<P STYLE="margin-bottom: 0cm">    filename =
+filedialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select
+a File&quot;,filetypes = ((&quot;Text files&quot;,&quot;*.txt*&quot;),(&quot;all
+files&quot;,&quot;*.*&quot;)))</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">    # Change label contents</P>
+<P STYLE="margin-bottom: 0cm">    path.set(filename)</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">def conversion(path,music):</P>
+<P STYLE="margin-bottom: 0cm">    address = path.get()</P>
+<P STYLE="margin-bottom: 0cm">    print(address)</P>
+<P STYLE="margin-bottom: 0cm">    f  = open(address)</P>
+<P STYLE="margin-bottom: 0cm">    mytext = f.read()</P>
+<P STYLE="margin-bottom: 0cm">    tts = gtts.gTTS(text = mytext,lang
+='en', tld ='co.in' ,slow='False')</P>
+<P STYLE="margin-bottom: 0cm">    tts.save(music.get() + &quot;.mp3&quot;)</P>
+<P STYLE="margin-bottom: 0cm">    f.close()</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">#Driver Code</P>
+<P STYLE="margin-bottom: 0cm">if __name__ == '__main__':</P>
+<P STYLE="margin-bottom: 0cm">    #GUI layout</P>
+<P STYLE="margin-bottom: 0cm">    gui = Tk()</P>
+<P STYLE="margin-bottom: 0cm">    gui.configure(background =
+&quot;purple&quot;)</P>
+<P STYLE="margin-bottom: 0cm">    gui.title('gTTs -- GUI version')</P>
+<P STYLE="margin-bottom: 0cm">    gui.geometry('370x150')</P>
+<P STYLE="margin-bottom: 0cm">    path = StringVar()</P>
+<P STYLE="margin-bottom: 0cm">    music = StringVar()</P>
+<P STYLE="margin-bottom: 0cm">    Title = Label(gui,text = &quot;Text
+To Speech&quot;).grid(row = 1,column =1)</P>
+<P STYLE="margin-bottom: 0cm">    Label1 = Label(gui,text='enter the
+path of your text file&gt;&gt;').grid(row=2,column=1)</P>
+<P STYLE="margin-bottom: 0cm">    Label2 = Label(gui,text='enter the
+name of music file&gt;&gt;').grid(row=3,column=1)</P>
+<P STYLE="margin-bottom: 0cm">    Entry1 =
+Entry(gui,textvariable=path).grid(row=2,column =2)</P>
+<P STYLE="margin-bottom: 0cm">    Entry2 =
+Entry(gui,textvariable=music).grid(row=3,column=2)</P>
+<P STYLE="margin-bottom: 0cm">    button_explore = Button(gui,text =
+&quot;...&quot;,command = browseFiles).grid(row =2,column = 4)</P>
+<P STYLE="margin-bottom: 0cm">    Button1 =
+Button(gui,text='convert',command=lambda:conversion(path,music)).grid(row
+=4,columnspan=2)</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">    gui.mainloop()</P>
+<P STYLE="margin-bottom: 0cm; border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Thanks You for reading this
+documentation</P>
+<P STYLE="margin-bottom: 0cm">For any query, contact me at
+<A HREF="mailto:chandrasayyam@gmail.com">chandrasayyam@gmail.com</A></P>
+<P STYLE="margin-bottom: 0cm; border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+</BODY>
+</HTML>
